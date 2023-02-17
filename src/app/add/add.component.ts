@@ -1,4 +1,5 @@
 // import { JsonPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { todoObj } from '../interface/todo';
@@ -9,10 +10,18 @@ import { todoObj } from '../interface/todo';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
+  d : any;
+  dpipe : any;
+  today : any;
   todoObj : todoObj;
   savebutton : boolean = true;
   updatebutton : boolean = false;
+
+  
   constructor(private router:Router, private route:ActivatedRoute) { 
+    this.d = Date.now();
+    this.dpipe = new DatePipe('en-US');
+    this.today = this.dpipe.transform(this.d,'yyyy-MM-dd');
     this.todoObj = new todoObj();
     this.route.params.subscribe((res)=>{
       this.todoObj.Id = res['id']

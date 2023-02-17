@@ -32,7 +32,7 @@
         </div>
            <div class= "dates">
             <label for="status" class="form-label">StartDate<span>*</span></label>
-            <input type="date" class="form-control" [(ngModel)] = "todoObj.Startdate" name="startDate" #sdate="ngModel" required >
+            <input type="date" class="form-control" [(ngModel)] = "todoObj.Startdate" name="startDate" [min]="today" #sdate="ngModel" required >
             <div *ngIf="sdate.invalid && (sdate.dirty || sdate.touched)">
                 <small *ngIf="sdate.errors?.['required']" class="alert">Start date is required</small>
             </div>
@@ -41,7 +41,7 @@
         <br>
             <div class="dates">
                 <label for="status" class="form-label">EndDate<span>*</span></label>
-            <input type="date" class="form-control" [(ngModel)] = "todoObj.Enddate" name="endDate"  #edate="ngModel" required>
+            <input type="date" class="form-control" [(ngModel)] = "todoObj.Enddate" name="endDate" [min]="today" #edate="ngModel" required>
             <div *ngIf="edate.invalid && (edate.dirty || edate.touched)">
             <small *ngIf="edate.errors?.['required']" class="alert">End date is required</small>
         </div>
@@ -51,7 +51,10 @@
           
            <div class="status form-group">
             <label for="status">Seleact Status : <span>*</span> </label>
-            <select class="form-control " [(ngModel)] = "todoObj.Status" name="status">
+            <select class="form-control " [(ngModel)] = "todoObj.Status" name="status" #sta="ngModel" required>
+                <div *ngIf="sta.invalid && (sta.dirty || sta.touched)">
+                    <small *ngIf="sta.errors?.['required']" class="alert"> Status is required</small>
+                </div>
                 <!-- <option selected>Open this select menu</option> -->
                 <option value="Active">Active</option>
                 <option value="Complete">Complete</option>
@@ -64,8 +67,8 @@
             <label for="status" class="form-label">StartDate</label>
             <input type="date" class="form-control" [(ngModel)] = "userObj.startDate" name="startDtae" >
            </div>    -->
-        <button  *ngIf= "savebutton" type="button" (click)= "saveItem()" class="btn btn-primary btn-block">Submit</button>
-         <button *ngIf= "updatebutton" type="button" (click)= "updateItem()" class="btn btn-primary">Update</button> 
+        <button  *ngIf= "savebutton" [disabled] = "tasktitle.invalid || taskdesc.invalid || sdate.invalid || edate.invalid || sta.invalid" type="button" (click)= "saveItem()" class="btn btn-primary btn-block">Submit</button>
+         <button *ngIf= "updatebutton" [disabled] = "tasktitle.invalid || taskdesc.invalid || sdate.invalid || edate.invalid || sta.invalid" type="button" (click)= "updateItem()" class="btn btn-primary">Update</button> 
         
       </form>
 
