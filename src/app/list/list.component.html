@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-header">TODO LIST</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">StartDate</th>
+                <th scope="col">Enddate</th>
+                <th scope="col">Status</th>
+                
+                <th scope="col">Action </th>
+                
+                
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let todo of todoList;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{todo.Title}}</td>
+                    <td>{{todo.Description}}</td>
+                    <td>{{todo.Startdate}}</td>
+                    <td>{{todo.Enddate}}</td>
+                    <td>{{todo.Status}}</td>
+                    
+                    <td>
+                        <button class="btn btn-sm btn-success" [routerLink]= "['/update',todo.Id]">Edit</button>
+                        <button class="btn btn-sm btn-danger" (click)= "delete(todo.Id)">Delete</button>
+                        
+                    </td>
+                    
+
+                </tr>
+
+
+            </tbody>     
+          </table>
+    </div>
+</div>
