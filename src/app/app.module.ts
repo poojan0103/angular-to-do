@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 // import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    // ToastrModule
+     ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

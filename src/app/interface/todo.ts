@@ -5,4 +5,7 @@ export class todoObj{
     Startdate?: Date;
     Enddate?: Date;
     Status?: String;
+    constructor(){
+        this.Status = "Active"
+    }
 }
