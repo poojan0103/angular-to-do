@@ -26,7 +26,7 @@
                     <td>{{todo.Enddate}}</td>
                     <!-- <td>{{todo.Status}}</td> -->
                     <td>
-                      <select class="form-select form-select-sm" [(ngModel)]= "todo.Status" name="status" aria-label=".form-select-sm example" id="status">
+                      <select class="form-select form-select-sm" [(ngModel)]= "todo.Status" (change)= "onoptionSelect(todo.Id,status.value)" name="status" aria-label=".form-select-sm example" id="status" #status>
                         <!-- <option selected>Open this select menu</option> -->
                         <option value="Active">Active</option>
                         <option value="Complete">Complete</option>
@@ -37,7 +37,7 @@
                     
                     <td>
                       <!-- <span class="glyphicon glyphicon-pencil" [routerLink]= "['/update',todo.Id]"></span> -->
-                        <button class="btn btn-sm btn-success" [routerLink]= "['/update',todo.Id]">Edit</button>
+                        <button class="btn btn-sm btn-success" (click)= "onoptionSelect(todo.Id,status.value)" [routerLink]= "['/update',todo.Id]">Edit</button>
                         <button class="btn btn-sm btn-danger" (click)= "delete(todo.Id)">Delete</button>
                         
                     </td>

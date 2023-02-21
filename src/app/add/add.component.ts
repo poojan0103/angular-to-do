@@ -26,14 +26,19 @@ export class AddComponent implements OnInit {
     this.todoObj = new todoObj();
     this.route.params.subscribe((res)=>{
       this.todoObj.Id = res['id']
+    // this.getData()
+    
     })
   }
 
   ngOnInit(): void {
     const oldRecords = localStorage.getItem('todoList');
+    let todoList;
+    let current;
     if(oldRecords !== null){
-      const todoList= JSON.parse(oldRecords)
-      const current = todoList.find((m:any)=> m.Id == this.todoObj.Id)
+      todoList= JSON.parse(oldRecords)
+      //debugger;
+      current = todoList.find((m:any)=> m.Id == this.todoObj.Id)
       if(current !== undefined){
         this.todoObj.Title = current.Title;
         this.todoObj.Description = current.Description;
@@ -47,6 +52,26 @@ export class AddComponent implements OnInit {
       }
     }
   }
+
+//   getData(){
+//     const oldRecords = localStorage.getItem('todoList');
+//     let todoList=[];
+//     let current;
+//     if(oldRecords !== null){
+//       todoList= JSON.parse(oldRecords)
+//       current = todoList.filter((m:any)=> m.Id == this.todoObj.Id)
+//       if(current !== undefined){
+//         this.todoObj.Title = current.Title;
+//         this.todoObj.Description = current.Description;
+//         this.todoObj.Startdate = current.Startdate;
+//         this.todoObj.Enddate = current.Enddate;
+//         this.todoObj.Status = current.Status;
+//         this.savebutton = false;
+//         this.updatebutton = true;
+        
+//   }
+// }
+//   }
   getId(){
     const oldRecords = localStorage.getItem('todoList');
     if(oldRecords !== null){
@@ -103,4 +128,3 @@ export class AddComponent implements OnInit {
 //   function showErrorMessage(message: any, string: any) {
 //     throw new Error('Function not implemented.');
 //   }
-

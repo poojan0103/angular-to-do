@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { ToastrService } from 'ngx-toastr/public_api';
 import { todoObj } from '../interface/todo';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -10,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ListComponent implements OnInit {
   todoList: todoObj [];
 todoObj: any;
-  constructor( private toastr: ToastrService) { 
+  constructor( private toastr: ToastrService,private router:Router) { 
     this.todoList = []
   }
 
@@ -20,6 +21,24 @@ todoObj: any;
       this.todoList = JSON.parse(records);
     }
   }
+
+  onoptionSelect(Id:any,val:String){
+    let oldRecords = localStorage.getItem('todoList')
+   let myarr;
+    if(oldRecords !== null){
+      myarr = JSON.parse(oldRecords);
+    }
+    //debugger;
+    const data = myarr.filter((item: { Id: any; })=> item.Id == Id)[0];
+    data.Status = val;
+    localStorage.setItem('todoList',JSON.stringify(myarr));
+    this.toastr.success('Status Updated!!', undefined, {
+      'positionClass': 'toast-top-center'
+ });
+    // this.router.navigate(['list']);
+    //debugger;
+  }
+
   delete(id:any){
     let result = confirm("Are you sure to delete this item");
     const oldRecords = localStorage.getItem('todoList');
