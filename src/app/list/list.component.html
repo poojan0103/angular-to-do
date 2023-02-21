@@ -37,7 +37,7 @@
                     
                     <td>
                       <!-- <span class="glyphicon glyphicon-pencil" [routerLink]= "['/update',todo.Id]"></span> -->
-                        <button class="btn btn-sm btn-success" (click)= "onoptionSelect(todo.Id,status.value)" [routerLink]= "['/update',todo.Id]">Edit</button>
+                        <button class="btn btn-sm btn-success" (click)= "setId(todo.Id)">Edit</button>
                         <button class="btn btn-sm btn-danger" (click)= "delete(todo.Id)">Delete</button>
                         
                     </td>

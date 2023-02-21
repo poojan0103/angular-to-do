@@ -5,6 +5,7 @@ export class todoObj{
     Startdate?: Date;
     Enddate?: Date;
     Status?: String;
+  // filter: any;
     constructor(){
         this.Status = "Active"
     }

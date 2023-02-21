@@ -1,13 +1,5 @@
 <!-- <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-        crossorigin="anonymous">
-        <style>
-            span,
-            small{
-                color: red;
-            }
-        </style>
-
+    
 
     </head> -->
 <div class="container my-4">
@@ -32,7 +24,7 @@
         </div>
            <div class= "col-md-2">
             <label for="status" class="form-label">StartDate<span>*</span></label>
-            <input type="date" class="form-control" [(ngModel)] = "todoObj.Startdate" name="startDate" [min]="today" #sdate="ngModel" required >
+            <input type="date" class="form-control" [(ngModel)] = "todoObj.Startdate" name="startDate" [min]="todaydate" #sdate="ngModel" required >
             <div *ngIf="sdate.invalid && (sdate.dirty || sdate.touched)">
                 <small *ngIf="sdate.errors?.['required']" class="alert">Start date is required</small>
             </div>
@@ -41,7 +33,7 @@
         <br>
             <div class="col-md-2">
                 <label for="status" class="form-label">EndDate<span>*</span></label>
-            <input type="date" class="form-control" [(ngModel)] = "todoObj.Enddate" name="endDate" [min]="today" #edate="ngModel" required>
+            <input type="date" class="form-control" [(ngModel)] = "todoObj.Enddate" name="endDate" [min]="todaydate" #edate="ngModel" required>
             <div *ngIf="edate.invalid && (edate.dirty || edate.touched)">
             <small *ngIf="edate.errors?.['required']" class="alert">End date is required</small>
         </div>
